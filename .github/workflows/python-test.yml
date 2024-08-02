@@ -63,4 +63,12 @@ jobs:
         sudo xvfb-run --auto-servernum `which coverage` run -m pytest phy/cluster/tests/test_clustering.py
         sudo xvfb-run --auto-servernum `which coverage` run -m pytest phy/cluster/tests/test_history.py
         sudo xvfb-run --auto-servernum `which coverage` run -m pytest phy/cluster/tests/test_utils.py
+
+    - name: Test with pytest apps
+      env:
+        QT_DEBUG_PLUGINS: 1
+      run: |
+        ulimit -c unlimited
+        sudo xvfb-run --auto-servernum pytest phy/apps/tests
+        
         
